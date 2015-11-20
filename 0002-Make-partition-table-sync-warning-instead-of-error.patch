@@ -1,0 +1,42 @@
+From ed40b2b815c19c2cb305f952dad9a24ec826d058 Mon Sep 17 00:00:00 2001
+From: William Douglas <william.douglas@intel.com>
+Date: Fri, 20 Nov 2015 19:38:27 +0000
+Subject: [PATCH 2/2] Make partition table sync warning instead of error
+
+In _disk_sync_part_table, if any issues are detected informing the
+kernel of the change, print the warning message but don't return an
+error (or force interactive ignore). This prevents automated partition
+creation from working as expected.
+---
+ libparted/arch/linux.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/libparted/arch/linux.c b/libparted/arch/linux.c
+index 0f18904..c458d84 100644
+--- a/libparted/arch/linux.c
++++ b/libparted/arch/linux.c
+@@ -3074,16 +3074,16 @@ _disk_sync_part_table (PedDisk* disk)
+                 ret = 1;
+         else {
+                 bad_part_list[strlen (bad_part_list) - 2] = 0;
+-                if (ped_exception_throw (
+-                        PED_EXCEPTION_ERROR,
+-                        PED_EXCEPTION_IGNORE_CANCEL,
++                ped_exception_throw (
++                        PED_EXCEPTION_WARNING,
++                        PED_EXCEPTION_OK,
+                         _("Partition(s) %s on %s have been written, but we have "
+                           "been unable to inform the kernel of the change, "
+                           "probably because it/they are in use.  As a result, "
+                           "the old partition(s) will remain in use.  You "
+                           "should reboot now before making further changes."),
+-                        bad_part_list, disk->dev->path) == PED_EXCEPTION_IGNORE)
+-                        ret = 1;
++                        bad_part_list, disk->dev->path);
++                ret = 1;
+                 free (bad_part_list);
+         }
+  cleanup:
+-- 
+2.6.3
+

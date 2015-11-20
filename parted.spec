@@ -4,7 +4,7 @@
 #
 Name     : parted
 Version  : 3.2
-Release  : 17
+Release  : 18
 URL      : http://ftp.gnu.org/gnu/parted/parted-3.2.tar.xz
 Source0  : http://ftp.gnu.org/gnu/parted/parted-3.2.tar.xz
 Summary  : The GNU disk partition manipulation program
@@ -20,6 +20,7 @@ BuildRequires : perl
 BuildRequires : pkgconfig(check)
 BuildRequires : readline-dev
 Patch1: 0001-Use-en_US.UTF-8-available-UTF-8-locale.patch
+Patch2: 0002-Make-partition-table-sync-warning-instead-of-error.patch
 
 %description
 The GNU Parted program allows you to create, destroy, resize, move,
@@ -40,6 +41,7 @@ Summary: dev components for the parted package.
 Group: Development
 Requires: parted-lib
 Requires: parted-bin
+Provides: parted-devel
 
 %description dev
 dev components for the parted package.
@@ -72,6 +74,7 @@ locales components for the parted package.
 %prep
 %setup -q -n parted-3.2
 %patch1 -p1
+%patch2 -p1
 
 %build
 %configure --disable-static --enable-nls \
@@ -79,6 +82,9 @@ locales components for the parted package.
 make V=1  %{?_smp_mflags}
 
 %check
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
