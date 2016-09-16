@@ -4,7 +4,7 @@
 #
 Name     : parted
 Version  : 3.2
-Release  : 21
+Release  : 22
 URL      : http://ftp.gnu.org/gnu/parted/parted-3.2.tar.xz
 Source0  : http://ftp.gnu.org/gnu/parted/parted-3.2.tar.xz
 Summary  : The GNU disk partition manipulation program
