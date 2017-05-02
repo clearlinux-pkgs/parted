@@ -6,7 +6,7 @@
 #
 Name     : parted
 Version  : 3.2
-Release  : 24
+Release  : 25
 URL      : http://ftp.gnu.org/gnu/parted/parted-3.2.tar.xz
 Source0  : http://ftp.gnu.org/gnu/parted/parted-3.2.tar.xz
 Source99 : http://ftp.gnu.org/gnu/parted/parted-3.2.tar.xz.sig
