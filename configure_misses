@@ -1,0 +1,6 @@
+Configure miss: priv.h
+Configure miss: a turkish Unicode locale
+Configure miss: getppriv
+Configure miss: linux/ext2_fs.h usability
+Configure miss: linux/ext2_fs.h presence
+Configure miss: linux/ext2_fs.h

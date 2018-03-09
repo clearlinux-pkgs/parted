@@ -6,13 +6,13 @@
 #
 Name     : parted
 Version  : 3.2
-Release  : 26
-URL      : http://ftp.gnu.org/gnu/parted/parted-3.2.tar.xz
-Source0  : http://ftp.gnu.org/gnu/parted/parted-3.2.tar.xz
-Source99 : http://ftp.gnu.org/gnu/parted/parted-3.2.tar.xz.sig
+Release  : 27
+URL      : https://mirrors.kernel.org/gnu/parted/parted-3.2.tar.xz
+Source0  : https://mirrors.kernel.org/gnu/parted/parted-3.2.tar.xz
+Source99 : https://mirrors.kernel.org/gnu/parted/parted-3.2.tar.xz.sig
 Summary  : The GNU disk partition manipulation program
 Group    : Development/Tools
-License  : GFDL-1.3 GPL-3.0
+License  : GPL-3.0
 Requires: parted-bin
 Requires: parted-lib
 Requires: parted-doc
@@ -81,25 +81,28 @@ locales components for the parted package.
 %patch2 -p1
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1489501104
-export CFLAGS="$CFLAGS -Os -ffunction-sections "
-export FCFLAGS="$CFLAGS -Os -ffunction-sections "
-export FFLAGS="$CFLAGS -Os -ffunction-sections "
-export CXXFLAGS="$CXXFLAGS -Os -ffunction-sections "
+export SOURCE_DATE_EPOCH=1520620408
+export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 %configure --disable-static --enable-nls \
 --enable-shared
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1489501104
+export SOURCE_DATE_EPOCH=1520620408
 rm -rf %{buildroot}
 %make_install
 %find_lang parted

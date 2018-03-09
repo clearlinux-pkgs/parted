@@ -1,5 +1,5 @@
 PKG_NAME := parted
-URL := http://ftp.gnu.org/gnu/parted/parted-3.2.tar.xz
-
+URL = https://mirrors.kernel.org/gnu/parted/parted-3.2.tar.xz
+ARCHIVES = 
 
 include ../common/Makefile.common
