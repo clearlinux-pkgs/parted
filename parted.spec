@@ -6,7 +6,7 @@
 #
 Name     : parted
 Version  : 3.2
-Release  : 27
+Release  : 28
 URL      : https://mirrors.kernel.org/gnu/parted/parted-3.2.tar.xz
 Source0  : https://mirrors.kernel.org/gnu/parted/parted-3.2.tar.xz
 Source99 : https://mirrors.kernel.org/gnu/parted/parted-3.2.tar.xz.sig
