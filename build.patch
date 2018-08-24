@@ -1,0 +1,10 @@
+--- parted-3.2/libparted/arch/linux.c~	2014-06-15 19:15:54.000000000 +0000
++++ parted-3.2/libparted/arch/linux.c	2018-08-24 14:50:53.369040296 +0000
+@@ -44,6 +44,7 @@
+ #ifdef ENABLE_DEVICE_MAPPER
+ #include <libdevmapper.h>
+ #endif
++#include <sys/sysmacros.h>
+ 
+ #include "../architecture.h"
+ #include "dirname.h"

@@ -1,0 +1,5 @@
+3.2
+glibc-locale
+ncurses-dev
+perl(Digest::CRC)
+readline-dev

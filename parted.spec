@@ -6,7 +6,7 @@
 #
 Name     : parted
 Version  : 3.2
-Release  : 28
+Release  : 29
 URL      : https://mirrors.kernel.org/gnu/parted/parted-3.2.tar.xz
 Source0  : https://mirrors.kernel.org/gnu/parted/parted-3.2.tar.xz
 Source99 : https://mirrors.kernel.org/gnu/parted/parted-3.2.tar.xz.sig
@@ -15,9 +15,11 @@ Group    : Development/Tools
 License  : GPL-3.0
 Requires: parted-bin
 Requires: parted-lib
-Requires: parted-doc
+Requires: parted-license
 Requires: parted-locales
+Requires: parted-man
 BuildRequires : LVM2-dev
+BuildRequires : glibc-locale
 BuildRequires : ncurses-dev
 BuildRequires : perl
 BuildRequires : perl(Digest::CRC)
@@ -25,6 +27,7 @@ BuildRequires : pkgconfig(check)
 BuildRequires : readline-dev
 Patch1: 0001-Use-en_US.UTF-8-available-UTF-8-locale.patch
 Patch2: 0002-Make-partition-table-sync-warning-instead-of-error.patch
+Patch3: build.patch
 
 %description
 The GNU Parted program allows you to create, destroy, resize, move,
@@ -35,6 +38,8 @@ to new hard disks.
 %package bin
 Summary: bin components for the parted package.
 Group: Binaries
+Requires: parted-license
+Requires: parted-man
 
 %description bin
 bin components for the parted package.
@@ -54,6 +59,7 @@ dev components for the parted package.
 %package doc
 Summary: doc components for the parted package.
 Group: Documentation
+Requires: parted-man
 
 %description doc
 doc components for the parted package.
@@ -62,9 +68,18 @@ doc components for the parted package.
 %package lib
 Summary: lib components for the parted package.
 Group: Libraries
+Requires: parted-license
 
 %description lib
 lib components for the parted package.
+
+
+%package license
+Summary: license components for the parted package.
+Group: Default
+
+%description license
+license components for the parted package.
 
 
 %package locales
@@ -75,17 +90,26 @@ Group: Default
 locales components for the parted package.
 
 
+%package man
+Summary: man components for the parted package.
+Group: Default
+
+%description man
+man components for the parted package.
+
+
 %prep
 %setup -q -n parted-3.2
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1520620408
+export SOURCE_DATE_EPOCH=1535122521
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
@@ -102,8 +126,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1520620408
+export SOURCE_DATE_EPOCH=1535122521
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/parted
+cp COPYING %{buildroot}/usr/share/doc/parted/COPYING
 %make_install
 %find_lang parted
 
@@ -133,9 +159,8 @@ rm -rf %{buildroot}
 /usr/lib64/pkgconfig/libparted.pc
 
 %files doc
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 %doc /usr/share/info/*
-%doc /usr/share/man/man8/*
 
 %files lib
 %defattr(-,root,root,-)
@@ -143,6 +168,15 @@ rm -rf %{buildroot}
 /usr/lib64/libparted-fs-resize.so.0.0.1
 /usr/lib64/libparted.so.2
 /usr/lib64/libparted.so.2.0.1
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/parted/COPYING
+
+%files man
+%defattr(-,root,root,-)
+/usr/share/man/man8/parted.8
+/usr/share/man/man8/partprobe.8
 
 %files locales -f parted.lang
 %defattr(-,root,root,-)
