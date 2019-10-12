@@ -1,6 +1,17 @@
+Configure miss: pthread_sigmask
+Configure miss: crtdefs.h
 Configure miss: priv.h
-Configure miss: a turkish Unicode locale
+Configure miss: strerror_r with POSIX signature
+Configure miss: fake locale system (OpenBSD)
+Configure miss: Solaris 11.4 locale system
+Configure miss: CFLocaleCopyPreferredLanguages
+Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
+Configure miss: working re_compile_pattern
+Configure miss: ioctl with POSIX signature
+Configure miss: working nanosleep
 Configure miss: getppriv
+Configure miss: whether pthread_sigmask is a macro
+Configure miss: 32-bit host C ABI
 Configure miss: linux/ext2_fs.h usability
 Configure miss: linux/ext2_fs.h presence
 Configure miss: linux/ext2_fs.h
