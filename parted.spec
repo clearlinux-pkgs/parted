@@ -6,14 +6,15 @@
 #
 Name     : parted
 Version  : 3.3
-Release  : 32
+Release  : 33
 URL      : https://mirrors.kernel.org/gnu/parted/parted-3.3.tar.xz
 Source0  : https://mirrors.kernel.org/gnu/parted/parted-3.3.tar.xz
 Source1 : https://mirrors.kernel.org/gnu/parted/parted-3.3.tar.xz.sig
-Summary  : A program for creating, destroying, resizing, checking and copying partitions
+Summary  : The GNU disk partition manipulation program
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: parted-bin = %{version}-%{release}
+Requires: parted-info = %{version}-%{release}
 Requires: parted-lib = %{version}-%{release}
 Requires: parted-license = %{version}-%{release}
 Requires: parted-locales = %{version}-%{release}
@@ -50,19 +51,17 @@ Requires: parted-lib = %{version}-%{release}
 Requires: parted-bin = %{version}-%{release}
 Provides: parted-devel = %{version}-%{release}
 Requires: parted = %{version}-%{release}
-Requires: parted = %{version}-%{release}
 
 %description dev
 dev components for the parted package.
 
 
-%package doc
-Summary: doc components for the parted package.
-Group: Documentation
-Requires: parted-man = %{version}-%{release}
+%package info
+Summary: info components for the parted package.
+Group: Default
 
-%description doc
-doc components for the parted package.
+%description info
+info components for the parted package.
 
 
 %package lib
@@ -100,6 +99,7 @@ man components for the parted package.
 
 %prep
 %setup -q -n parted-3.3
+cd %{_builddir}/parted-3.3
 %patch1 -p1
 %patch2 -p1
 
@@ -108,8 +108,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570898988
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1573774231
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -130,10 +129,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1570898988
+export SOURCE_DATE_EPOCH=1573774231
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/parted
-cp COPYING %{buildroot}/usr/share/package-licenses/parted/COPYING
+cp %{_builddir}/parted-3.3/COPYING %{buildroot}/usr/share/package-licenses/parted/e31db874e5b375f0592b02e3e450c9e94086e661
 %make_install
 %find_lang parted
 
@@ -163,9 +162,9 @@ cp COPYING %{buildroot}/usr/share/package-licenses/parted/COPYING
 /usr/lib64/pkgconfig/libparted-fs-resize.pc
 /usr/lib64/pkgconfig/libparted.pc
 
-%files doc
+%files info
 %defattr(0644,root,root,0755)
-%doc /usr/share/info/*
+/usr/share/info/parted.info
 
 %files lib
 %defattr(-,root,root,-)
@@ -176,7 +175,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/parted/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/parted/COPYING
+/usr/share/package-licenses/parted/e31db874e5b375f0592b02e3e450c9e94086e661
 
 %files man
 %defattr(0644,root,root,0755)
