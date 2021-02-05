@@ -6,7 +6,7 @@
 #
 Name     : parted
 Version  : 3.4
-Release  : 36
+Release  : 37
 URL      : https://mirrors.kernel.org/gnu/parted/parted-3.4.tar.xz
 Source0  : https://mirrors.kernel.org/gnu/parted/parted-3.4.tar.xz
 Source1  : https://mirrors.kernel.org/gnu/parted/parted-3.4.tar.xz.sig
