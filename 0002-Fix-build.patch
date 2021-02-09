@@ -1,0 +1,21 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Arjan van de Ven <arjan@linux.intel.com>
+Date: Fri, 24 Aug 2018 14:55:29 +0000
+Subject: [PATCH] Fix build
+
+---
+ libparted/arch/linux.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libparted/arch/linux.c b/libparted/arch/linux.c
+index 0fb4f00..45520f1 100644
+--- a/libparted/arch/linux.c
++++ b/libparted/arch/linux.c
+@@ -45,6 +45,7 @@
+ #ifdef ENABLE_DEVICE_MAPPER
+ #include <libdevmapper.h>
+ #endif
++#include <sys/sysmacros.h>
+ 
+ #include "../architecture.h"
+ #include "dirname.h"

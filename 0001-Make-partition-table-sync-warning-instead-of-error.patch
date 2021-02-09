@@ -1,7 +1,7 @@
-From ed40b2b815c19c2cb305f952dad9a24ec826d058 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: William Douglas <william.douglas@intel.com>
 Date: Fri, 20 Nov 2015 19:38:27 +0000
-Subject: [PATCH 2/2] Make partition table sync warning instead of error
+Subject: [PATCH] Make partition table sync warning instead of error
 
 In _disk_sync_part_table, if any issues are detected informing the
 kernel of the change, print the warning message but don't return an
@@ -12,10 +12,10 @@ creation from working as expected.
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/libparted/arch/linux.c b/libparted/arch/linux.c
-index 0f18904..c458d84 100644
+index 94ea176..0fb4f00 100644
 --- a/libparted/arch/linux.c
 +++ b/libparted/arch/linux.c
-@@ -3074,16 +3074,16 @@ _disk_sync_part_table (PedDisk* disk)
+@@ -3214,16 +3214,16 @@ _disk_sync_part_table (PedDisk* disk)
                  ret = 1;
          else {
                  bad_part_list[strlen (bad_part_list) - 2] = 0;
@@ -37,6 +37,3 @@ index 0f18904..c458d84 100644
                  free (bad_part_list);
          }
   cleanup:
--- 
-2.6.3
-
