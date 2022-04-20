@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x117E8C168EFE3A7F (bcl@redhat.com)
 #
 Name     : parted
-Version  : 3.4
-Release  : 38
-URL      : https://mirrors.kernel.org/gnu/parted/parted-3.4.tar.xz
-Source0  : https://mirrors.kernel.org/gnu/parted/parted-3.4.tar.xz
-Source1  : https://mirrors.kernel.org/gnu/parted/parted-3.4.tar.xz.sig
+Version  : 3.5
+Release  : 39
+URL      : https://mirrors.kernel.org/gnu/parted/parted-3.5.tar.xz
+Source0  : https://mirrors.kernel.org/gnu/parted/parted-3.5.tar.xz
+Source1  : https://mirrors.kernel.org/gnu/parted/parted-3.5.tar.xz.sig
 Summary  : The GNU disk partition manipulation program
 Group    : Development/Tools
 License  : GPL-3.0
@@ -99,8 +99,8 @@ man components for the parted package.
 
 
 %prep
-%setup -q -n parted-3.4
-cd %{_builddir}/parted-3.4
+%setup -q -n parted-3.5
+cd %{_builddir}/parted-3.5
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -110,15 +110,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1612891092
+export SOURCE_DATE_EPOCH=1650419932
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
-export FCFLAGS="$FFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
-export FFLAGS="$FFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition "
 %configure --disable-static --enable-nls \
 --enable-shared
 make  %{?_smp_mflags}
@@ -131,10 +131,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1612891092
+export SOURCE_DATE_EPOCH=1650419932
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/parted
-cp %{_builddir}/parted-3.4/COPYING %{buildroot}/usr/share/package-licenses/parted/e31db874e5b375f0592b02e3e450c9e94086e661
+cp %{_builddir}/parted-3.5/COPYING %{buildroot}/usr/share/package-licenses/parted/e31db874e5b375f0592b02e3e450c9e94086e661
 %make_install
 %find_lang parted
 
@@ -171,9 +171,9 @@ cp %{_builddir}/parted-3.4/COPYING %{buildroot}/usr/share/package-licenses/parte
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libparted-fs-resize.so.0
-/usr/lib64/libparted-fs-resize.so.0.0.3
+/usr/lib64/libparted-fs-resize.so.0.0.4
 /usr/lib64/libparted.so.2
-/usr/lib64/libparted.so.2.0.3
+/usr/lib64/libparted.so.2.0.4
 
 %files license
 %defattr(0644,root,root,0755)

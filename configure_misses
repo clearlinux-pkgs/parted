@@ -1,24 +1,20 @@
-Configure miss: whether the compiler is clang
-Configure miss: compiler option needed when checking for declarations
-Configure miss: pthread_sigmask
-Configure miss: crtdefs.h
-Configure miss: priv.h
-Configure miss: whether the compiler produces multi-arch binaries
-Configure miss: strerror_r with POSIX signature
-Configure miss: fake locale system (OpenBSD)
-Configure miss: Solaris 11.4 locale system
 Configure miss: CFLocaleCopyPreferredLanguages
-Configure miss: library needed for semaphore functions
-Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
-Configure miss: whether mbrtowc stores incomplete characters
-Configure miss: working re_compile_pattern
-Configure miss: ioctl with POSIX signature
-Configure miss: working nanosleep
+Configure miss: Solaris 11.4 locale system
+Configure miss: compiler option needed when checking for declarations
+Configure miss: crtdefs.h
+Configure miss: fake locale system (OpenBSD)
+Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: getppriv
-Configure miss: whether pthread_sigmask is a macro
-Configure miss: sys/single_threaded.h usability
-Configure miss: sys/single_threaded.h presence
-Configure miss: sys/single_threaded.h
-Configure miss: linux/ext2_fs.h usability
-Configure miss: linux/ext2_fs.h presence
+Configure miss: ioctl with POSIX signature
+Configure miss: library needed for semaphore functions
 Configure miss: linux/ext2_fs.h
+Configure miss: priv.h
+Configure miss: strerror_r with POSIX signature
+Configure miss: whether ctype.h defines __header_inline
+Configure miss: whether mbrtowc stores incomplete characters
+Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
+Configure miss: whether pthread_sigmask is a macro
+Configure miss: whether the compiler is clang
+Configure miss: whether the compiler produces multi-arch binaries
+Configure miss: working nanosleep
+Configure miss: x86_64-generic-linux-gnu-file

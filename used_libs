@@ -2,5 +2,5 @@ libblkid.so.1
 libc.so.6
 libdevmapper.so.1.02
 libreadline.so.8
-libtinfow.so.6
+libtinfo.so.6
 libuuid.so.1
