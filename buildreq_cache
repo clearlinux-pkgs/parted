@@ -3,3 +3,4 @@ glibc-locale
 ncurses-dev
 perl(Digest::CRC)
 readline-dev
+util-linux-dev

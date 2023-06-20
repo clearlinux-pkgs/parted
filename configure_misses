@@ -1,20 +1,40 @@
 Configure miss: CFLocaleCopyPreferredLanguages
+Configure miss: CFLocaleCopyPreferredLanguages
+Configure miss: Solaris 11.4 locale system
 Configure miss: Solaris 11.4 locale system
 Configure miss: compiler option needed when checking for declarations
+Configure miss: compiler option needed when checking for declarations
+Configure miss: crtdefs.h
 Configure miss: crtdefs.h
 Configure miss: fake locale system (OpenBSD)
+Configure miss: fake locale system (OpenBSD)
+Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: getppriv
+Configure miss: getppriv
+Configure miss: ioctl with POSIX signature
 Configure miss: ioctl with POSIX signature
 Configure miss: library needed for semaphore functions
+Configure miss: library needed for semaphore functions
+Configure miss: linux/ext2_fs.h
 Configure miss: linux/ext2_fs.h
 Configure miss: priv.h
+Configure miss: priv.h
+Configure miss: strerror_r with POSIX signature
 Configure miss: strerror_r with POSIX signature
 Configure miss: whether ctype.h defines __header_inline
+Configure miss: whether ctype.h defines __header_inline
+Configure miss: whether mbrtowc stores incomplete characters
 Configure miss: whether mbrtowc stores incomplete characters
 Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
+Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
+Configure miss: whether pthread_sigmask is a macro
 Configure miss: whether pthread_sigmask is a macro
 Configure miss: whether the compiler is clang
+Configure miss: whether the compiler is clang
+Configure miss: whether the compiler produces multi-arch binaries
 Configure miss: whether the compiler produces multi-arch binaries
 Configure miss: working nanosleep
+Configure miss: working nanosleep
+Configure miss: x86_64-generic-linux-gnu-file
 Configure miss: x86_64-generic-linux-gnu-file
