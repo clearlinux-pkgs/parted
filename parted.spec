@@ -6,11 +6,11 @@
 # Source0 file verified with key 0x117E8C168EFE3A7F (bcl@redhat.com)
 #
 Name     : parted
-Version  : 3.5
-Release  : 40
-URL      : https://mirrors.kernel.org/gnu/parted/parted-3.5.tar.xz
-Source0  : https://mirrors.kernel.org/gnu/parted/parted-3.5.tar.xz
-Source1  : https://mirrors.kernel.org/gnu/parted/parted-3.5.tar.xz.sig
+Version  : 3.6
+Release  : 41
+URL      : https://mirrors.kernel.org/gnu/parted/parted-3.6.tar.xz
+Source0  : https://mirrors.kernel.org/gnu/parted/parted-3.6.tar.xz
+Source1  : https://mirrors.kernel.org/gnu/parted/parted-3.6.tar.xz.sig
 Summary  : The GNU disk partition manipulation program
 Group    : Development/Tools
 License  : GPL-3.0
@@ -105,13 +105,13 @@ man components for the parted package.
 
 
 %prep
-%setup -q -n parted-3.5
-cd %{_builddir}/parted-3.5
+%setup -q -n parted-3.6
+cd %{_builddir}/parted-3.6
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
 pushd ..
-cp -a parted-3.5 buildavx2
+cp -a parted-3.6 buildavx2
 popd
 
 %build
@@ -119,7 +119,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1687225451
+export SOURCE_DATE_EPOCH=1689812742
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -153,7 +153,7 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || : || :
 
 %install
-export SOURCE_DATE_EPOCH=1687225451
+export SOURCE_DATE_EPOCH=1689812742
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/parted
 cp %{_builddir}/parted-%{version}/COPYING %{buildroot}/usr/share/package-licenses/parted/e31db874e5b375f0592b02e3e450c9e94086e661 || :
@@ -198,12 +198,12 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libparted-fs-resize.so.0.0.4
-/V3/usr/lib64/libparted.so.2.0.4
+/V3/usr/lib64/libparted-fs-resize.so.0.0.5
+/V3/usr/lib64/libparted.so.2.0.5
 /usr/lib64/libparted-fs-resize.so.0
-/usr/lib64/libparted-fs-resize.so.0.0.4
+/usr/lib64/libparted-fs-resize.so.0.0.5
 /usr/lib64/libparted.so.2
-/usr/lib64/libparted.so.2.0.4
+/usr/lib64/libparted.so.2.0.5
 
 %files license
 %defattr(0644,root,root,0755)
